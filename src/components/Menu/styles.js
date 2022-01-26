@@ -1,12 +1,20 @@
-import styled from "styled-components";
-
+import styled, { keyframes } from "styled-components";
+export const animation = keyframes`
+  from{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+  }
+`;
 export const ContainerMenu = styled.div`
   width: 100%;
   max-width: 345px;
   min-height: 100vh;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   padding: 0px 45px;
   font-family: "Roboto Slab", serif;
   font-size: 18px;
@@ -15,7 +23,6 @@ export const ContainerMenu = styled.div`
   @media screen and (max-width: 960px) {
     max-width: 245px;
     padding: 0;
-    /* border: 2px solid black; */
   }
   @media screen and (max-width: 800px) {
     max-width: 100%;
@@ -31,7 +38,7 @@ export const ContainerMenu = styled.div`
       width: 50%;
       max-width: 250px;
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 50%);
-      display: none;
+      /* display: none; */
       visibility: hidden;
       background-color: white;
       border-radius: 5px;
@@ -42,8 +49,9 @@ export const ContainerMenu = styled.div`
       }
     }
     nav.ativo {
-      display: block;
-      visibility: visible;
+      /* display: block;
+      visibility: visible; */
+      animation: ${animation} forwards 1s ease-in-out;
     }
   }
 `;

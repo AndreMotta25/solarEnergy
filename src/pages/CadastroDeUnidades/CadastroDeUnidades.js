@@ -8,7 +8,8 @@ import Button from "../../components/Button/Button";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CadastroDeUnidades = () => {
   const { state } = useLocation();
   const [nickName, setNickName] = useState("");
@@ -54,6 +55,7 @@ const CadastroDeUnidades = () => {
     // nessa parte aqui que tratariamos de colocar o obj no banco
     if (Object.getOwnPropertyNames(errors).length <= 0) {
       if (state) {
+        toast("Atualizando", { autoClose: 1500 });
         crud("PUT", {
           id: id,
           obj: {
@@ -67,6 +69,7 @@ const CadastroDeUnidades = () => {
         navigate("/unidades");
         // window.location.href = "/unidades";
       } else {
+        toast("Unidade Criada com sucesso", { autoClose: 1500 });
         crud("POST", {
           obj: {
             apelido: nickName,
