@@ -1,0 +1,20 @@
+{
+  "unidades": [
+    {
+      "apelido": "Painel 3",
+      "local": "Rua do figo, 53",
+      "marca": "resun",
+      "modelo": "155",
+      "ativo": true,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "apelido": "Painel 4",
+      "local": "Rua do figo, 54",
+      "marca": "resun",
+      "modelo": "155w",
+      "ativo": true
+    }
+  ]
+}
