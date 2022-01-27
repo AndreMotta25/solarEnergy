@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InputText = styled.input`
   width: 100%;
   border-radius: ${({ borderRadius }) => (borderRadius ? "4px" : "10px")};
-  border: 1px solid ${({ error }) => (error ? "red" : "gray")};
+  border: 1px solid ${({ error }) => (error ? "red" : "#a8a9ac")};
   padding: 15px;
   padding-left: ${({ img }) => img};
   outline: none;

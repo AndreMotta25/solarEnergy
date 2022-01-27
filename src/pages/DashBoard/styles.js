@@ -16,7 +16,7 @@ export const ContainerCards = styled.div`
 `;
 export const WrapperPanel = styled.div`
   width: 80%;
-  max-width: 860px;
+  /* max-width: 860px; */
   margin: 50px auto;
 `;
 export const Panel = styled.img`

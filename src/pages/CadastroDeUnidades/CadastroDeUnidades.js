@@ -10,6 +10,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const CadastroDeUnidades = () => {
   const { state } = useLocation();
   const [nickName, setNickName] = useState("");
@@ -20,6 +21,8 @@ const CadastroDeUnidades = () => {
   const [id, setId] = useState("");
   const [errors, setErros] = useState({});
   const navigate = useNavigate();
+
+  // assign the unit data in the form for the update
   useEffect(() => {
     if (state) {
       setNickName(state.apelido);
@@ -30,7 +33,7 @@ const CadastroDeUnidades = () => {
       setId(state.id);
     }
   }, [state]);
-
+  // this function does the work of some crud functions
   function crud(type, { id = "", obj }) {
     fetch(`http://localhost:3333/unidades/${id}`, {
       method: type,
@@ -45,6 +48,7 @@ const CadastroDeUnidades = () => {
     let errors = {};
     const arrayStates = [nickName, place, brand, model];
     const arrayStatesString = ["Apelido", "Local", "Marca", "Modelo"];
+    // structure made to save some if`s
     arrayStates.forEach((state, indice) => {
       if (!state) {
         let prop = arrayStatesString[indice];
@@ -52,8 +56,9 @@ const CadastroDeUnidades = () => {
       }
     });
     setErros(errors);
-    // nessa parte aqui que tratariamos de colocar o obj no banco
+    // if the data is valid
     if (Object.getOwnPropertyNames(errors).length <= 0) {
+      // update the unit
       if (state) {
         toast("Atualizando", { autoClose: 1500 });
         crud("PUT", {
@@ -67,8 +72,9 @@ const CadastroDeUnidades = () => {
           },
         });
         navigate("/unidades");
-        // window.location.href = "/unidades";
-      } else {
+      }
+      // make a new unit
+      else {
         toast("Unidade Criada com sucesso", { autoClose: 1500 });
         crud("POST", {
           obj: {
@@ -80,7 +86,6 @@ const CadastroDeUnidades = () => {
           },
         });
         navigate("/unidades");
-        // window.location.href = "/unidades";
       }
     }
   }
