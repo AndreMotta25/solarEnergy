@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerCard = styled.div`
-  max-width: 258px;
+  /* max-width: 258px; */
+  ${({ large }) => (large ? "min-width:258px;" : "max-width: 258px;")}
   width: 100%;
   height: 134px;
   border: 1px solid #dfe0eb;
@@ -14,7 +15,7 @@ export const ContainerCard = styled.div`
   background-color: white;
   border-radius: 8px;
   text-align: center;
-
+  flex: 1;
   &:hover * {
     border-color: #3751ff;
     color: #3751ff !important;

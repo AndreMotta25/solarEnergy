@@ -1,28 +1,40 @@
 {
-  "unidades": [
+  "geracoes": [
     {
-      "id": 2,
-      "apelido": "Painel 2",
-      "local": "Rua do figo, 52",
-      "marca": "resun",
-      "modelo": "155w",
-      "ativo": true
+      "unidade": "5",
+      "data": "May/2022",
+      "kw": "2",
+      "id": 1
     },
     {
-      "id": 3,
+      "unidade": "5",
+      "data": "Dec/2022",
+      "kw": "2",
+      "id": 2
+    },
+    {
+      "unidade": "6",
+      "data": "Jan/2022",
+      "kw": "2",
+      "id": 3
+    }
+  ],
+  "unidades": [
+    {
       "apelido": "Painel 3",
       "local": "Rua do figo, 53",
       "marca": "resun",
       "modelo": "155w",
-      "ativo": true
+      "ativo": true,
+      "id": 3
     },
     {
-      "id": 4,
       "apelido": "Painel 4",
       "local": "Rua do figo, 54",
       "marca": "resun",
       "modelo": "155w",
-      "ativo": true
+      "ativo": false,
+      "id": 4
     },
     {
       "apelido": "Painel 7",
@@ -31,6 +43,14 @@
       "modelo": "255w",
       "ativo": true,
       "id": 5
+    },
+    {
+      "apelido": "Painel 8",
+      "local": "Rua do fgo  3333",
+      "marca": "ress",
+      "modelo": "33w",
+      "ativo": true,
+      "id": 6
     }
   ]
 }

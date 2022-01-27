@@ -47,6 +47,9 @@ export const ContainerMenu = styled.div`
       li {
         margin: 0 auto;
       }
+      @media screen and (max-width: 400px) {
+        width: 70%;
+      }
     }
     nav.ativo {
       /* display: block;

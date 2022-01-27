@@ -4,8 +4,8 @@ import { Container, LabelDescription, CheckboxInput } from "./styles";
 const Checkbox = ({ label, ...otherProps }) => {
   return (
     <Container>
-      <CheckboxInput type="checkbox" {...otherProps} />
-      <LabelDescription>{label}</LabelDescription>
+      <CheckboxInput id="check" type="checkbox" {...otherProps} />
+      <LabelDescription htmlFor="check">{label}</LabelDescription>
     </Container>
   );
 };

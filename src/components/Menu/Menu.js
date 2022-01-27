@@ -47,7 +47,7 @@ const Menu = () => {
               </Link>
             </ItemMenu>
             <ItemMenu>
-              <Link to="/">
+              <Link to="/monthlyGeneration">
                 <Icone>
                   <IoMdSettings color="#A098AE" size={"24px"} />
                 </Icone>
