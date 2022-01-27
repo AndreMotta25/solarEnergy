@@ -1,14 +1,6 @@
 {
   "unidades": [
     {
-      "apelido": "Painel ",
-      "local": "Rua do figo, 51",
-      "marca": "resun",
-      "modelo": "155w",
-      "ativo": true,
-      "id": 1
-    },
-    {
       "id": 2,
       "apelido": "Painel 2",
       "local": "Rua do figo, 52",
