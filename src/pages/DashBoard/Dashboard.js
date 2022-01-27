@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [unitsActive, setUnitsActive] = useState("");
   const [unitsDisabled, setUnitsDisabled] = useState("");
   const [average, setAverage] = useState("");
-
+  const [dataGrafics, setDataGrafics] = useState([]);
   // removes all letters, we use it to turn all models into a summable number
   function removeLetters(text) {
     return text.replace(/[^0-9\.]+/g, "");
@@ -46,6 +46,45 @@ const Dashboard = () => {
     }
     getData();
   }, []);
+
+  // manipula dados para a criacao do grafico
+  useEffect(() => {
+    const filteredDates = [];
+    let year = [];
+    // const month = []
+    // vai pegar os objetos que contem as datas e vai filtra-las
+    async function getGenerations() {
+      const objsGen = await (
+        await fetch("http://localhost:3333/geracoes")
+      ).json();
+      console.log(objsGen);
+      // nao deixa as datas se repetirem, caso aja uma repetida, a ultima e a que vale
+      objsGen.forEach((obj) => {
+        obj.ano = obj.data.split("/")[1];
+        obj.mes = obj.data.split("/")[0];
+        year = year.includes(obj.data.split("/")[1])
+          ? ""
+          : [...year, obj.data.split("/")[1]];
+        if (filteredDates.length <= 0) {
+          filteredDates.push(obj);
+        } else {
+          filteredDates.find((elem) => {
+            if (elem.data == obj.data && elem.unidade == obj.unidade) {
+              elem.kw = obj.kw;
+            } else {
+              filteredDates.push(obj);
+            }
+          });
+        }
+      });
+
+      console.log(filteredDates);
+      console.log(year);
+    }
+
+    getGenerations();
+  }, []);
+
   return (
     <>
       <Menu></Menu>
