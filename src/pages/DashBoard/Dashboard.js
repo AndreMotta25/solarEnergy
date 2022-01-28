@@ -6,7 +6,6 @@ import { Chart } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import Card from "../../components/Card/Card";
 import Title from "../../components/Title/Title";
-import url from "../../assets/grafico.png";
 import Menu from "../../components/Menu/Menu";
 
 const Dashboard = () => {
@@ -36,13 +35,14 @@ const Dashboard = () => {
       },
     },
   };
-  const [units, setUnits] = useState("");
+  const [units, setUnits] = useState([]);
   const [unitsActive, setUnitsActive] = useState("");
   const [unitsDisabled, setUnitsDisabled] = useState("");
-  const [average, setAverage] = useState("");
+  const [average, setAverage] = useState(0);
   const [dataGrafics, setDataGrafics] = useState({});
   const [years, setYears] = useState([]);
   const [readyChartData, setreadyChartData] = useState(null);
+
   // removes all letters, we use it to turn all models into a summable number
   function removeLetters(text) {
     return text.replace(/[^0-9\.]+/g, "");
@@ -58,27 +58,28 @@ const Dashboard = () => {
           return unit.ativo === true;
         });
       });
-      setUnits(datas.length);
+      setUnits(datas);
       setUnitsDisabled(() => {
         return datas.filter((unit) => {
           return unit.ativo === false;
         });
       });
 
-      setAverage(
-        new Intl.NumberFormat({ maximumSignificantDigits: 2 }).format(
-          datas
-            .map((unit) => +removeLetters(unit.modelo))
-            .reduce((acc, value) => acc + value) / datas.length
-        ) + "Kw"
-      );
+      // setAverage(
+      //   new Intl.NumberFormat({ maximumSignificantDigits: 2 }).format(
+      //     datas
+      //       .map((unit) => +removeLetters(unit.modelo))
+      //       .reduce((acc, value) => acc + value) / datas.length
+      //   ) + "Kw"
+      // );
     }
     getData();
   }, []);
 
-  // manipula dados para a criacao do grafico
+  // manipulate data to create the chart
   useEffect(() => {
     let year = [];
+    // will group all records by years
     function groupBy(objetoArray, propriedade) {
       return objetoArray.reduce(function (acc, obj) {
         obj.ano = obj.data.split("/")[1];
@@ -87,25 +88,26 @@ const Dashboard = () => {
           ? year
           : [...year, obj.data.split("/")[1]];
 
-        // vai ser uma propriedade
+        // it will be a property
         let key = obj[propriedade];
-        // caso a propriedade nao exiista vamos cria-la e nela vamos atribuir um array
+        // if the property does not exist, let's create it and assign an array to it
         if (!acc[key]) {
           acc[key] = [];
         }
         acc[key].push(obj);
         return acc;
-        // vamos transformar o acumulador em um objeto
+        // let's turn the accumulator into an object
       }, {});
     }
 
-    // vai pegar os objetos que contem as datas e vai filtra-las
+    // will get the objects that contain the dates and will filter them
     async function getGenerations() {
       const objsMeasurement = await (
         await fetch("http://localhost:3333/geracoes")
       ).json();
-      console.log(objsMeasurement);
-      // agrupa os dados
+
+      let totalEnergy = 0;
+      // groups the data
       let measurementRecord = groupBy(objsMeasurement, "ano");
       for (let ano of year) {
         measurementRecord[ano] = groupBy(measurementRecord[ano], "mes");
@@ -116,6 +118,7 @@ const Dashboard = () => {
               tot += +mes.kw;
             }
             measurementRecord[ano][month] = tot;
+            totalEnergy += tot;
           } else {
             measurementRecord[ano][month] = 0;
           }
@@ -123,16 +126,17 @@ const Dashboard = () => {
       }
       setYears(year);
       setDataGrafics(measurementRecord);
-      console.log(measurementRecord);
+      setAverage(totalEnergy);
     }
     getGenerations();
   }, []);
-
+  // assemble the chart
   useEffect(() => {
     if (Object.getOwnPropertyNames(dataGrafics).length >= 1) {
       let datasets = [];
       const data = { labels: months };
       let contador = 1;
+
       for (let year of years) {
         let objMeasurement = {
           label: year,
@@ -150,8 +154,12 @@ const Dashboard = () => {
             dataGrafics[year]["Nov"],
             dataGrafics[year]["Dec"],
           ],
-          borderColor: "rgb(255, 99, 132)",
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
+          borderColor: `rgb(${Math.ceil(
+            Math.random() * (255 - 0) + 0
+          )},${Math.ceil(Math.random() * (255 - 0) + 0)}, 132)`,
+          backgroundColor: `rgba(${
+            Math.random() * (255 - 0) + 0
+          }, 99, 132, 0.5)`,
           fill: false,
           hidden: contador == 1 ? false : true,
         };
@@ -159,7 +167,6 @@ const Dashboard = () => {
         datasets.push(objMeasurement);
       }
       data["datasets"] = datasets;
-      console.log(data);
       setreadyChartData(data);
     }
   }, [dataGrafics]);
@@ -169,16 +176,19 @@ const Dashboard = () => {
       <Wrapper>
         <Title title="Dashboard" />
         <ContainerCards>
-          <Card label="Total Unidades" unidades={units}></Card>
+          <Card label="Total Unidades" unidades={units.length}></Card>
           <Card label="Unidades Ativas" unidades={unitsActive.length}></Card>
           <Card
             label="Unidades Inativas"
             unidades={unitsDisabled.length}
           ></Card>
-          <Card label="Media de energia" unidades={average} large={true}></Card>
+          <Card
+            label="Media de energia"
+            unidades={units.length > 0 ? average / units.length + " Kw" : 0}
+            large={true}
+          ></Card>
         </ContainerCards>
         <WrapperPanel>
-          {/* <Panel src={url} /> */}
           {readyChartData && <Line data={readyChartData} options={options} />}
         </WrapperPanel>
       </Wrapper>
