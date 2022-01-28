@@ -6,15 +6,28 @@ import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import logo from "../../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 const Login = () => {
   const history = useNavigate();
-
+  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
-  // tem que validar os dados ainda e depois redirecionar
+
   function checkFields(e) {
     e.preventDefault();
-    history("/dashboard");
+    const errors = {};
+    if (!email) {
+      errors.email = "Email é obrigatorio";
+    }
+    if (!passWord) {
+      errors.passWord = "password é obrigatorio";
+    }
+    if (Object.getOwnPropertyNames(errors) <= 0) {
+      toast("Entrando", { autoClose: 500 });
+      history("/dashboard");
+    }
+    setErrors(errors);
   }
   return (
     <Container>
@@ -36,6 +49,7 @@ const Login = () => {
           onChange={(event) => {
             setEmail(event.target.value);
           }}
+          error={errors.email}
         />
         <Input
           Img={RiLockPasswordLine}
@@ -45,6 +59,7 @@ const Login = () => {
           onChange={(event) => {
             setPassWord(event.target.value);
           }}
+          error={errors.passWord}
         />
         <Button>Entrar</Button>
       </Form>

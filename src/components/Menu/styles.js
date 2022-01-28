@@ -44,6 +44,7 @@ export const ContainerMenu = styled.div`
       border-radius: 5px;
       padding: 10px;
       z-index: 9999;
+      min-width: 210px;
       li {
         margin: 0 auto;
       }
@@ -52,8 +53,6 @@ export const ContainerMenu = styled.div`
       }
     }
     nav.ativo {
-      /* display: block;
-      visibility: visible; */
       animation: ${animation} forwards 1s ease-in-out;
     }
   }
@@ -64,10 +63,7 @@ export const ItemMenu = styled.li`
   width: 100%;
   border-radius: 20px;
   display: flex;
-  /* align-items: center; */
-  /* padding: 16px 24px;
-  position: relative;
-  gap: 30px; */
+
   a {
     display: flex;
     padding: 16px 24px;
