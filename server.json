@@ -3,14 +3,8 @@
     {
       "unidade": "5",
       "data": "May/2022",
-      "kw": "2",
-      "id": 1
-    },
-    {
-      "unidade": "5",
-      "data": "May/2022",
       "kw": "6",
-      "id": 2
+      "id": 1
     },
     {
       "unidade": "6",
@@ -23,6 +17,48 @@
       "data": "Feb/2023",
       "kw": "12",
       "id": 4
+    },
+    {
+      "unidade": "6",
+      "data": "May/2022",
+      "kw": "3",
+      "id": 5
+    },
+    {
+      "unidade": "3",
+      "data": "May/2022",
+      "kw": "3",
+      "id": 6
+    },
+    {
+      "unidade": "6",
+      "data": "Oct/2022",
+      "kw": "2",
+      "id": 7
+    },
+    {
+      "unidade": "3",
+      "data": "Oct/2022",
+      "kw": "2",
+      "id": 8
+    },
+    {
+      "unidade": "6",
+      "data": "Jul/2022",
+      "kw": "6",
+      "id": 9
+    },
+    {
+      "unidade": "5",
+      "data": "Aug/2024",
+      "kw": "1000",
+      "id": 10
+    },
+    {
+      "unidade": "5",
+      "data": "Sep/2024",
+      "kw": "300",
+      "id": 11
     }
   ],
   "unidades": [
