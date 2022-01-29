@@ -39,7 +39,7 @@ const Menu = () => {
               </Link>
             </ItemMenu>
             <ItemMenu>
-              <Link to="/unidades">
+              <Link to="/units">
                 <Icone>
                   <BiPulse size={"24px"} color="#A098AE" />
                 </Icone>

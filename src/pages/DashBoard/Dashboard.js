@@ -184,7 +184,13 @@ const Dashboard = () => {
           ></Card>
           <Card
             label="Media de energia"
-            unidades={units.length > 0 ? average / units.length + " Kw" : 0}
+            unidades={
+              units.length > 0
+                ? new Intl.NumberFormat({ maximumSignificantDigits: 2 }).format(
+                    average / units.length
+                  ) + " Kw"
+                : 0
+            }
             large={true}
           ></Card>
         </ContainerCards>

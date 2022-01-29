@@ -11,7 +11,7 @@ import Menu from "../../components/Menu/Menu";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CadastroDeUnidades = () => {
+const UnitRegistration = () => {
   const { state } = useLocation();
   const [nickName, setNickName] = useState("");
   const [place, setPlace] = useState("");
@@ -85,7 +85,7 @@ const CadastroDeUnidades = () => {
             ativo: active,
           },
         });
-        navigate("/unidades");
+        navigate("/units");
       }
     }
   }
@@ -157,4 +157,4 @@ const CadastroDeUnidades = () => {
   );
 };
 
-export default CadastroDeUnidades;
+export default UnitRegistration;

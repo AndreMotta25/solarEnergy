@@ -16,7 +16,7 @@ import Menu from "../../components/Menu/Menu";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // units page
-const Unidades = () => {
+const Units = () => {
   const [units, setUnits] = useState([]);
   const history = useNavigate();
 
@@ -25,7 +25,7 @@ const Unidades = () => {
 
   // redirect the page to a unit item update
   function redirectPage(unit) {
-    history("/CadastroDeUnidades", { state: unit });
+    history("/unitRegistration", { state: unit });
   }
   // read the database
   useEffect(() => {
@@ -121,4 +121,4 @@ const Unidades = () => {
   );
 };
 
-export default Unidades;
+export default Units;

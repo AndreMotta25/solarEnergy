@@ -9,7 +9,7 @@
     {
       "unidade": "6",
       "data": "Jan/2022",
-      "kw": "100",
+      "kw": "5",
       "id": 3
     },
     {
@@ -77,6 +77,12 @@
       "data": "Dec/2022",
       "kw": "200",
       "id": 14
+    },
+    {
+      "unidade": "7",
+      "data": "Aug/2022",
+      "kw": "5",
+      "id": 15
     }
   ],
   "unidades": [
@@ -105,12 +111,20 @@
       "id": 5
     },
     {
-      "apelido": "Painel 8",
-      "local": "Rua do fgo  3333",
-      "marca": "ress",
-      "modelo": "33w",
+      "apelido": "Panel 1",
+      "local": "rua paulo de tarso ",
+      "marca": "resun",
+      "modelo": "200w",
       "ativo": true,
       "id": 6
+    },
+    {
+      "apelido": "resuz",
+      "local": "rua da uva",
+      "marca": "resun",
+      "modelo": "300w",
+      "ativo": true,
+      "id": 7
     }
   ]
 }
