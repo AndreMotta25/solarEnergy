@@ -86,7 +86,7 @@ const MonthlyGeneration = () => {
     <>
       <Menu></Menu>
       <Wrapper>
-        <Title title="Lancamento de geracao mensal" />
+        <Title title="Lançamento de geracao mensal" />
         <Form onSubmit={handleSubmit}>
           <Select
             label="Unidade geradora"

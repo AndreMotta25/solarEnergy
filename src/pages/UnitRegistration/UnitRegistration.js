@@ -71,7 +71,7 @@ const UnitRegistration = () => {
             ativo: active,
           },
         });
-        navigate("/unidades");
+        navigate("/units");
       }
       // make a new unit
       else {
@@ -96,8 +96,8 @@ const UnitRegistration = () => {
       <Wrapper>
         <Title title="Unidades" />
         <WrapperModify>
-          {(state && <SubTitle>Alteraçao de Unidade Geradora</SubTitle>) || (
-            <SubTitle>Criaçao de Unidade Geradora</SubTitle>
+          {(state && <SubTitle>Alteração de Unidade Geradora</SubTitle>) || (
+            <SubTitle>Criação de Unidade Geradora</SubTitle>
           )}
           {/* validar os dados aqui depois */}
           <Form width={"50%"} onSubmit={validateData}>
