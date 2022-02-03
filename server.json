@@ -87,7 +87,7 @@
     {
       "unidade": "7",
       "data": "Feb/2022",
-      "kw": "2",
+      "kw": "5",
       "id": 16
     },
     {
@@ -95,6 +95,12 @@
       "data": "Sep/2022",
       "kw": "2",
       "id": 17
+    },
+    {
+      "unidade": "6",
+      "data": "Jun/2022",
+      "kw": "1",
+      "id": 18
     }
   ],
   "unidades": [
@@ -103,7 +109,7 @@
       "local": "Rua do figo, 53",
       "marca": "resun",
       "modelo": "155w",
-      "ativo": false,
+      "ativo": true,
       "id": 3
     },
     {
