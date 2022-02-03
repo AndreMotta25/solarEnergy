@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import InputDate from "../../components/InputDate/InputDate";
 import Menu from "../../components/Menu/Menu";
 import Title from "../../components/Title/Title";
@@ -15,11 +15,11 @@ const MonthlyGeneration = () => {
   const [kw, setKw] = useState(0);
   const [option, setOption] = useState("");
   const [errors, setErrors] = useState({});
+  const existingItem = useRef("");
   const navigate = useNavigate();
 
   // will update or add a measurement
   function putOrPost(type, id = "") {
-    // Make the post
     const data = String(startDate).split(" ");
     fetch(`http://localhost:3333/geracoes/${id}`, {
       method: type,
@@ -36,14 +36,14 @@ const MonthlyGeneration = () => {
   // checks if a measurement already exists
   function alreadyRegistered() {
     const data = String(startDate).split(" ");
-    return measurementRecord.find((measurement) => {
-      if (
+    const itemExist = measurementRecord.find(
+      (measurement) =>
         measurement.unidade === option &&
         `${data[1]}/${data[3]}` === measurement.data
-      ) {
-        return true;
-      }
-    });
+    );
+
+    existingItem.current = itemExist ? itemExist.id : "";
+    return existingItem.current;
   }
   // validate the data
   function handleSubmit(event) {
@@ -58,16 +58,26 @@ const MonthlyGeneration = () => {
         errors[prop] = `${arrayStatesString[indice]} é obrigatorio`;
       }
     });
-    // if the data is valid
+
     if (Object.getOwnPropertyNames(errors).length <= 0) {
-      putOrPost(
-        (alreadyRegistered() && "PUT") || (!alreadyRegistered() && "POST"),
-        alreadyRegistered() && alreadyRegistered().id
-      );
-      toast.success("Salvo com sucesso", { autoClose: 1000 });
+      // if the person tries to change a date already set, an alert will be launched
+      if (
+        alreadyRegistered() &&
+        window.confirm(
+          "Ja existe uma unidade com essa data. Se voce insistir iremos sobreescreve-la"
+        )
+      ) {
+        toast.success("Medida Atualizada", { autoClose: 1000 });
+        putOrPost("PUT", existingItem.current);
+      } else if (!existingItem.current) {
+        toast.success("Salvo com sucesso", { autoClose: 1000 });
+        putOrPost("POST");
+      } else {
+        toast("Redirecionando para a DashBoard", { autoClose: 1000 });
+      }
+      existingItem.current = "";
       // redirect to dashboard
       navigate(`/dashboard`);
-      // });
     }
     setErrors(errors);
   }

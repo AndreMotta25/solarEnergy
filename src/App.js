@@ -10,6 +10,7 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 import Units from "./pages/Units/Units";
 import UnitRegistration from "./pages/UnitRegistration/UnitRegistration";
 import MonthlyGeneration from "./pages/MonthlyGeneration/MonthlyGeneration";
+import NoMatch from "./pages/NoMatch/NoMatch";
 // componentes
 import { ToastContainer } from "react-toastify";
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/units" element={<Units />} />
         <Route path="/unitRegistration" element={<UnitRegistration />} />
         <Route path="/monthlyGeneration" element={<MonthlyGeneration />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
       <ToastContainer />
     </>
@@ -28,3 +30,6 @@ function App() {
 }
 
 export default App;
+
+// novas adicoes
+// - paginas notFound
