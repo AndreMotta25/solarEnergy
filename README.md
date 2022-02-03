@@ -1,7 +1,18 @@
+
+
+### `Como começar ?` 
+  *   Faça o clone do repositorio https://github.com/AndreMotta25/solarEnergy.git
+  *   Com o vsCode aberto, vá ao terminal e digite npm install, assim as dependencias do projeto vão ser instaladas(esse processo pode demorar).
+  *   Com tudo instalado devidamente, vá ao terminal e digite npm run server(para iniciar o servidor) e numa outra aba do terminal digite npm start(pra rodar o app), 
+  note, você tem que fazer isso em diferentes abas do terminal.
+  *   Agora é so testar a aplicação.
+  Se tudo ocorrer bem depois que você passar pela tela de login,você terá uma tela semelhante a está abaixo:
+  <img align="center" src="https://github.com/AndreMotta25/solarEnergy/blob/master/capa.jpg">
+  
+  
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 ## Available Scripts
 
 In the project directory, you can run:

@@ -79,7 +79,8 @@ const Dashboard = () => {
   // manipulate data to create the chart
   useEffect(() => {
     let year = [];
-    // will group all records by years
+    // will group all records by years,
+    // uma parte dessa funcao eu peguei do mozila     
     function groupBy(objetoArray, propriedade) {
       return objetoArray.reduce(function (acc, obj) {
         obj.ano = obj.data.split("/")[1];
