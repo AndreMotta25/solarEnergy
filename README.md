@@ -8,7 +8,10 @@
   *   Agora é so testar a aplicação.
   Se tudo ocorrer bem depois que você passar pela tela de login,você terá uma tela semelhante a está abaixo:
   <img align="center" src="https://github.com/AndreMotta25/solarEnergy/blob/master/capa.jpg">
-  
+
+### `Atualizações`
+ - Inseri a pagina notfound para caso o usuario entre numa pagina que não existe.
+ - Fiz algumas melhorias em outras partes do codigo, visando uma melhor leitura do mesmo.  
   
 # Getting Started with Create React App
 
