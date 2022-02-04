@@ -12,6 +12,7 @@
 ### `Atualizações`
  - Inseri a pagina notfound para caso o usuario entre numa pagina que não existe.
  - Fiz algumas melhorias em outras partes do codigo, visando uma melhor leitura do mesmo.  
+ - Mudei a estrutura das paginas, antes eu chamava o menu e o titulo em cada pagina, agora temos uma pagina generica que ja contem os dois.
   
 # Getting Started with Create React App
 
