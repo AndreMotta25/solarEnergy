@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ContainerCards, WrapperPanel, Panel } from "./styles";
-import Wrapper from "../../components/Wrapper/Wrapper";
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import Card from "../../components/Card/Card";
-import Title from "../../components/Title/Title";
-import Menu from "../../components/Menu/Menu";
+
+import GenericPage from "../GenericPage/GenericPage";
 
 const Dashboard = () => {
   const months = [
@@ -43,10 +42,6 @@ const Dashboard = () => {
   const [years, setYears] = useState([]);
   const [readyChartData, setreadyChartData] = useState(null);
 
-  // removes all letters, we use it to turn all models into a summable number
-  function removeLetters(text) {
-    return text.replace(/[^0-9\.]+/g, "");
-  }
   // get the data to fill in the cards
   useEffect(() => {
     async function getData() {
@@ -64,14 +59,6 @@ const Dashboard = () => {
           return unit.ativo === false;
         });
       });
-
-      // setAverage(
-      //   new Intl.NumberFormat({ maximumSignificantDigits: 2 }).format(
-      //     datas
-      //       .map((unit) => +removeLetters(unit.modelo))
-      //       .reduce((acc, value) => acc + value) / datas.length
-      //   ) + "Kw"
-      // );
     }
     getData();
   }, []);
@@ -80,7 +67,7 @@ const Dashboard = () => {
   useEffect(() => {
     let year = [];
     // will group all records by years,
-    // uma parte dessa funcao eu peguei do mozila     
+    // uma parte dessa funcao eu peguei do mozila
     function groupBy(objetoArray, propriedade) {
       return objetoArray.reduce(function (acc, obj) {
         obj.ano = obj.data.split("/")[1];
@@ -173,9 +160,7 @@ const Dashboard = () => {
   }, [dataGrafics]);
   return (
     <>
-      <Menu></Menu>
-      <Wrapper>
-        <Title title="Dashboard" />
+      <GenericPage title="DashBoard">
         <ContainerCards>
           <Card label="Total Unidades" unidades={units.length}></Card>
           <Card label="Unidades Ativas" unidades={unitsActive.length}></Card>
@@ -198,7 +183,7 @@ const Dashboard = () => {
         <WrapperPanel>
           {readyChartData && <Line data={readyChartData} options={options} />}
         </WrapperPanel>
-      </Wrapper>
+      </GenericPage>
     </>
   );
 };

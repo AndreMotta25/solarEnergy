@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { SubTitle, WrapperModify } from "./styles";
-import Title from "../../components/Title/Title";
 import Form from "../../components/Form/Form";
-import Wrapper from "../../components/Wrapper/Wrapper";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import Menu from "../../components/Menu/Menu";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GenericPage from "../GenericPage/GenericPage";
 
 const UnitRegistration = () => {
   const { state } = useLocation();
@@ -91,10 +89,7 @@ const UnitRegistration = () => {
   }
   return (
     <>
-      <Menu></Menu>
-
-      <Wrapper>
-        <Title title="Unidades" />
+      <GenericPage title="Unidades">
         <WrapperModify>
           {(state && <SubTitle>Alteração de Unidade Geradora</SubTitle>) || (
             <SubTitle>Criação de Unidade Geradora</SubTitle>
@@ -152,7 +147,7 @@ const UnitRegistration = () => {
             <Button>Salvar</Button>
           </Form>
         </WrapperModify>
-      </Wrapper>
+      </GenericPage>
     </>
   );
 };

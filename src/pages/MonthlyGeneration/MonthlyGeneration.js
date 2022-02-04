@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import InputDate from "../../components/InputDate/InputDate";
-import Menu from "../../components/Menu/Menu";
-import Title from "../../components/Title/Title";
 import { Wrapper, Form } from "./styles";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import GenericPage from "../GenericPage/GenericPage";
 
 const MonthlyGeneration = () => {
   const [measurementRecord, setMeasurementRecord] = useState([]);
@@ -94,40 +93,40 @@ const MonthlyGeneration = () => {
   }, []);
   return (
     <>
-      <Menu></Menu>
-      <Wrapper>
-        <Title title="Lançamento de geracao mensal" />
-        <Form onSubmit={handleSubmit}>
-          <Select
-            label="Unidade geradora"
-            value={option}
-            onChange={(event) => {
-              setOption(event.target.value);
-            }}
-            error={errors.Unidade}
-          />
-          <InputDate
-            label="Mes/ano"
-            selected={startDate}
-            onChange={(date) => {
-              setStartDate(date);
-            }}
-          />
-          <Input
-            label="Total kw gerado"
-            value={kw}
-            borderRadius={true}
-            width={"30%"}
-            type="number"
-            onChange={(event) => {
-              setKw(event.target.value);
-            }}
-            min={0}
-            error={errors.Kw}
-          />
-          <Button>Cadastrar</Button>
-        </Form>
-      </Wrapper>
+      <GenericPage title="Lançamento de geração mensal">
+        <Wrapper>
+          <Form onSubmit={handleSubmit}>
+            <Select
+              label="Unidade geradora"
+              value={option}
+              onChange={(event) => {
+                setOption(event.target.value);
+              }}
+              error={errors.Unidade}
+            />
+            <InputDate
+              label="Mes/ano"
+              selected={startDate}
+              onChange={(date) => {
+                setStartDate(date);
+              }}
+            />
+            <Input
+              label="Total kw gerado"
+              value={kw}
+              borderRadius={true}
+              width={"30%"}
+              type="number"
+              onChange={(event) => {
+                setKw(event.target.value);
+              }}
+              min={0}
+              error={errors.Kw}
+            />
+            <Button>Cadastrar</Button>
+          </Form>
+        </Wrapper>
+      </GenericPage>
     </>
   );
 };

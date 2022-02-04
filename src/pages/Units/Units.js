@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Title from "../../components/Title/Title";
-import Wrapper from "../../components/Wrapper/Wrapper";
 import Button from "../../components/Button/Button";
 import {
   Table,
@@ -12,9 +10,10 @@ import {
   WrapperButton,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
-import Menu from "../../components/Menu/Menu";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GenericPage from "../GenericPage/GenericPage";
+
 // units page
 const Units = () => {
   const [units, setUnits] = useState([]);
@@ -60,9 +59,7 @@ const Units = () => {
 
   return (
     <>
-      <Menu></Menu>
-      <Wrapper>
-        <Title title="Unidades" />
+      <GenericPage title="Unidades">
         <Table>
           <Header>
             <Line>
@@ -116,7 +113,7 @@ const Units = () => {
             Nova Unidade
           </Button>
         </WrapperButton>
-      </Wrapper>
+      </GenericPage>
     </>
   );
 };

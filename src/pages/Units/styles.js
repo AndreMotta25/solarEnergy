@@ -49,6 +49,7 @@ export const Header = styled.thead`
 export const Line = styled.tr`
   border-bottom: 1px solid #dbdde0;
   border-top: 1px solid #dbdde0;
+  
 `;
 export const ItemLine = styled.td`
   font-family: "Mulish", sans-serif;
